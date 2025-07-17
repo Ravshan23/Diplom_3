@@ -20,7 +20,6 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 public class EnterPersonalAccountTest {
-    private static final Logger logger = LoggerFactory.getLogger(EnterPersonalAccountTest.class);
 
     private WebDriver driver;
     private WebDriverWait wait;

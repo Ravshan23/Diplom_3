@@ -11,10 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TabScrollTest {
-    private static final Logger logger = LoggerFactory.getLogger(TabScrollTest.class);
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -32,53 +32,24 @@ public class TabScrollTest {
     }
 
     @Test
-    public void verifyBunsTabScroll() {
-        // Сначала переключаемся на "Соусы", затем возвращаемся на "Булки"
+    public void shouldDisplayBunsSectionWhenClicked() throws InterruptedException {
+        mainPage.waitForSaucesTab();
         mainPage.clickSaucesTab();
-        mainPage.waitForBunsTab();
         mainPage.clickBunsTab();
-        mainPage.waitForBunsHeader();
-        assertTrue(mainPage.isBunsHeaderDisplayed());
-
-        //  Проверка, что заголовок раздела "Булки" отображается
-        mainPage.waitForBunsIngredient();
-        assertTrue(mainPage.isBunsIngredientDisplayed());
-        // Проверка видимости первого ингредиента и его положения на экране
-        assertTrue(mainPage.isElementInViewport(mainPage.waitForBunsIngredient()));
+        assertEquals("Не сработал переход к разделу Булки", "Булки", mainPage.fetchActiveTabLabel());
+    }
+    @Test
+    public void shouldShowSaucesSectionOnTabClick() throws InterruptedException {
+        mainPage.waitForSaucesTab();
+        mainPage.clickSaucesTab();
+        assertEquals("Не сработал переход к разделу Соусы", "Соусы", mainPage.fetchActiveTabLabel());
     }
 
     @Test
-    public void verifySaucesTabScroll() {
-        // Сначала кликаем по "Начинкам", затем переходим в "Соусы"
+    public void shouldOpenFillingsSectionCorrectly() throws InterruptedException {
         mainPage.waitForFillingsTab();
         mainPage.clickFillingsTab();
-        mainPage.waitForSaucesTab();
-        mainPage.clickSaucesTab();
-        mainPage.waitForSaucesHeader();
-        assertTrue(mainPage.isSaucesHeaderDisplayed());
-        // Ожидаем, что первый ингредиент в разделе "Соусы" станет видимым
-        mainPage.waitForSaucesIngredient();
-        assertTrue(mainPage.isSaucesIngredientDisplayed());
-        // Проверяем, что ингредиент находится в пределах viewport
-        assertTrue(mainPage.isElementInViewport(mainPage.waitForSaucesIngredient()));
-    }
-
-    @Test
-    public void verifyFillingsTabScroll() {
-        // Для смены раздела: сначала "Соусы", затем "Начинки"
-        mainPage.waitForSaucesTab();
-        mainPage.clickSaucesTab();
-        mainPage.waitForFillingsTab();
-        mainPage.clickFillingsTab();
-
-        // Проверка наличия заголовка и ингредиента в блоке "Начинки"
-        mainPage.waitForFillingsHeader();
-        mainPage.isFillingsHeaderDisplayed();
-        mainPage.waitForFillingsIngredient();
-        assertTrue(mainPage.isFillingsIngredientDisplayed());
-        // Скролл к элементу и проверка, что он виден на экране
-        mainPage.scrollToElement(mainPage.waitForFillingsIngredient());
-        assertTrue(mainPage.isElementInViewport(mainPage.waitForFillingsIngredient()));
+        assertEquals("Не сработал переход к разделу Начинки", "Начинки", mainPage.fetchActiveTabLabel());
     }
 
     @After

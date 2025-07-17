@@ -81,20 +81,6 @@ public class RegisterPage {
         registerlink.click();
     }
 
-    @Step("Ввод имени")
-    public void enterName(String name) {
-        webDriver.findElements(inputFields).get(0).sendKeys(name);
-    }
-
-    @Step("Ввод email")
-    public void enterEmail(String email) {
-        webDriver.findElements(inputFields).get(1).sendKeys(email);
-    }
-
-    @Step("Ввод пароля")
-    public void enterPassword(String password) {
-        webDriver.findElements(inputFields).get(2).sendKeys(password);
-    }
 
     @Step("Ввод информации для регистрации")
     public void enterRegistrationInfo(String name, String email, String password) {
@@ -110,20 +96,12 @@ public class RegisterPage {
         registerbutton.click();
     }
 
-    @Step("Получение текста заголовка 'Вход'")
-    public By getEnterTitleText() {
-        return enterTitle;
-    }
 
     @Step("Ожидание видимости заголовка Вход")
     public WebElement waitForEnterTitle() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(enterTitle));
     }
 
-    @Step("Проверка загрузки страницы Входа")
-    public boolean checkEnterTitleIsDisplayed() {
-        return webDriver.findElement(enterTitle).isDisplayed();
-    }
 
     @Step("Прокрутка вниз до элемента")
     public void scrollToElement(WebElement element) {

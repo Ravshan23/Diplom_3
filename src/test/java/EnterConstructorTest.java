@@ -21,7 +21,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class EnterConstructorTest {
-    private static final Logger logger = LoggerFactory.getLogger(EnterConstructorTest.class);
 
     private WebDriver driver;
     private WebDriverWait wait;
