@@ -8,21 +8,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.AuthorizationPage;
 import pageobject.PersonalAccountPage;
 import pageobject.RegisterPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
 public class ExitPersonalAccountTest {
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private AuthorizationPage authorizationPage;
     private RegisterPage registryPage;
     private PersonalAccountPage personalAccountPage;
@@ -35,9 +29,6 @@ public class ExitPersonalAccountTest {
     public void initializeEnvironment() {
         //Настройка драйвера и загрузка страницы
         driver = BrowserFactory.getWebDriver();
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         driver.get(TestConfig.BASE_URI);
 
         authorizationPage = new AuthorizationPage(driver);

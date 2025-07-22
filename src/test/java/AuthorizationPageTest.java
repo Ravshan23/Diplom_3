@@ -23,7 +23,6 @@ public class AuthorizationPageTest {
     private static final Logger logger = LoggerFactory.getLogger(AuthorizationPageTest.class);
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private AuthorizationPage authorizationPage;
     private RegisterPage registryPage;
     private SetNewPasswordPage recoverPasswwordPage;
@@ -37,7 +36,6 @@ public class AuthorizationPageTest {
         //Запуск браузера
         driver = BrowserFactory.getWebDriver();
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Переход на стартовую страницу
         driver.get(TestConfig.BASE_URI);

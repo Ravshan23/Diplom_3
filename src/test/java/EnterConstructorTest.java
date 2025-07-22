@@ -8,22 +8,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.AuthorizationPage;
 import pageobject.RegisterPage;
 import pageobject.MainPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.openqa.selenium.TimeoutException;
 import java.time.Duration;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class EnterConstructorTest {
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private AuthorizationPage authorizationPage;
     private RegisterPage registryPage;
     private MainPage mainPage;
@@ -35,7 +29,6 @@ public class EnterConstructorTest {
     @Before
     public void initBrowserAndRegisterUser() {
         driver = BrowserFactory.getWebDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         try {
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60)); // если не задано

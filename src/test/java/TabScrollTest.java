@@ -4,20 +4,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.MainPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.time.Duration;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class TabScrollTest {
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private MainPage mainPage;
 
     @Before
@@ -25,7 +18,6 @@ public class TabScrollTest {
         //Настройка браузера и открытие страницы
         driver = BrowserFactory.getWebDriver();
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize(); // Максимизировать окно браузера
         driver.get(TestConfig.BASE_URI);
         mainPage = new MainPage(driver);

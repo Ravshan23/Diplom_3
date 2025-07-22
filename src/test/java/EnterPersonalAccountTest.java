@@ -8,21 +8,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.AuthorizationPage;
 import pageobject.RegisterPage;
 import pageobject.PersonalAccountPage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.time.Duration;
 
 import static org.junit.Assert.assertTrue;
 
 public class EnterPersonalAccountTest {
 
     private WebDriver driver;
-    private WebDriverWait wait;
     private AuthorizationPage authorizationPage;
     private RegisterPage registryPage;
     private PersonalAccountPage accountPage;
@@ -34,7 +28,6 @@ public class EnterPersonalAccountTest {
     @Before
     public void initTestEnvironment() {
         driver = BrowserFactory.getWebDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get(TestConfig.BASE_URI);
 
         authorizationPage = new AuthorizationPage(driver);
